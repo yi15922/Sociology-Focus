@@ -13,6 +13,7 @@ library("ggplot2")
 
 #setwd("C:/Users/jmq4/Desktop") #Note: if you're on a mac, the directory path should look a little 
 #different...
+setwd(~/Sociology-Focus)
 
 
 #Let's use this function to read in the qualtrics file and store it to an object we'll call "dat"
@@ -77,12 +78,25 @@ summary(dat[,37])
 summary(dat$HowOftenVoteLocal) #both of these lines show the same thing
 
 dat <- dat %>%
-  select(-IPAddress, -StartDate, -EndDate, Status, -Duration..in.seconds., 
+  select(-IPAddress, -StartDate, -EndDate, -Status, -Duration..in.seconds., 
          -RecipientEmail, -ExternalReference, -RecipientFirstName, -RecipientLastName, 
          -LocationLatitude, -LocationLongitude, -DistributionChannel, -UserLanguage, -Agree, 
-         -comments, -gender_6_TEXT, -RecordedDate)
+         -comments, -gender_6_TEXT, -RecordedDate, -ResponseId)
 
 names(dat)
+
+dat <- dat %>%
+  select(-Progress, -Finished, -Q86, -Q87, -Q88)
+
+premedDat <- dat[c(4, 11),]
+bioneuroDat <- dat[c(1, 2, 3, 7, 8, 14, 17, 20, 21, 22),]
+engineeringDat <- dat[c(5, 12, 13),]
+compsciDat <- dat[c(6, 10, 15, 16, 24),]
+psychDat <- dat[c(9),]
+econDat <- dat[c(18, 25, 26, 28),]
+pubPolDat <- dat[c(23, 25, 27, 28),]
+
+colMeans(premedDat)
 
 #as.numeric(dat$HowOftenVoteLocal)
 
