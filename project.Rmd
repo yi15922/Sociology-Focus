@@ -31,7 +31,11 @@ dat <- dat %>%
          -Q87, -Q88)
 
 names(dat)
+```
 
+Categorizing the data by major intent
+
+```{r categorize}
 premedDat <- dat[c(4, 11),]
 bioneuroDat <- dat[c(1, 2, 3, 7, 8, 14, 17, 20, 21, 22),]
 engineeringDat <- dat[c(5, 12, 13),]
@@ -40,6 +44,10 @@ psychDat <- dat[c(9),]
 econDat <- dat[c(18, 25, 26, 28),]
 pubPolDat <- dat[c(23, 25, 27, 28),]
 ```
+
+### Preliminary Analyses
+
+Calculating the mean results by major intent
 
 ```{r means}
 colMeans(premedDat)

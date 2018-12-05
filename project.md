@@ -59,6 +59,8 @@ names(dat)
     ## [23] "attention_inactive_1"  "gender"               
     ## [25] "Q85"
 
+Categorizing the data by major intent
+
 ``` r
 premedDat <- dat[c(4, 11),]
 bioneuroDat <- dat[c(1, 2, 3, 7, 8, 14, 17, 20, 21, 22),]
@@ -68,6 +70,11 @@ psychDat <- dat[c(9),]
 econDat <- dat[c(18, 25, 26, 28),]
 pubPolDat <- dat[c(23, 25, 27, 28),]
 ```
+
+### Preliminary Analyses
+
+Calculating the mean results by major
+    intent
 
 ``` r
 colMeans(premedDat)
@@ -91,10 +98,3 @@ colMeans(premedDat)
     ##                 -0.60                 -0.65                  2.50 
     ##                   Q85 
     ##                  1.00
-
-``` r
-dat$gender
-```
-
-    ##  [1]  1  1  1  3  2  1  2  1  1  2  2  1  2  2  2  2  1  2  2  1  1  1  1
-    ## [24]  1  1  3  2  1 NA NA NA NA NA NA NA NA NA NA NA
