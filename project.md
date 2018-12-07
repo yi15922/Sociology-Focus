@@ -109,7 +109,7 @@ dat$concept1_E_1
 
 ``` r
 dat %>%
-  na.omit() %>%
+  na.omit(concept1_E_1) %>%
   summarise(mean = mean(concept1_E_1), min = min(concept1_E_1), max = max(concept1_E_1), sd = sd(concept1_E_1))
 ```
 
@@ -117,11 +117,43 @@ dat %>%
     ## 1 -0.2333333 -1.9 2.6 1.248514
 
 ``` r
-dat %>%
-  ggplot(mapping = aes(concept1_E_1)) +
+analyze <- function(column) {
+  
+  stat <- dat %>%
+    na.omit(column) %>%
+    summarise(mean = mean(column), min = min(column), max = max(column), sd = sd(column))
+  
+  plot <- ggplot(data = dat, mapping = aes(column)) +
   geom_histogram(binwidth = 0.15)
+  
+  list <- list("stat" = stat, "plot" = plot)
+  
+  return(list)
+}
+
+analyze(dat$concept1_E_1)
 ```
+
+    ## $stat
+    ##   mean min max sd
+    ## 1   NA  NA  NA NA
+    ## 
+    ## $plot
 
     ## Warning: Removed 10 rows containing non-finite values (stat_bin).
 
 ![](project_files/figure-gfm/means-1.png)<!-- -->
+
+``` r
+analyze(dat$concept1_P_1)
+```
+
+    ## $stat
+    ##   mean min max sd
+    ## 1   NA  NA  NA NA
+    ## 
+    ## $plot
+
+    ## Warning: Removed 10 rows containing non-finite values (stat_bin).
+
+![](project_files/figure-gfm/means-2.png)<!-- -->
