@@ -1,4 +1,4 @@
-Project Markdown
+Sociology Project
 ================
 Names
 
@@ -98,3 +98,30 @@ colMeans(premedDat)
     ##                 -0.60                 -0.65                  2.50 
     ##                   Q85 
     ##                  1.00
+
+``` r
+dat$concept1_E_1
+```
+
+    ##  [1]  0.0 -0.8 -1.5  0.1  2.6 -0.9 -0.8  1.0 -1.9  0.3 -1.1  0.3  0.0  0.2
+    ## [15] -2.2 -1.2  1.0  0.2 -1.5 -1.2  0.4 -0.5 -0.5 -0.6 -1.2  1.4 -0.6 -0.9
+    ## [29]   NA   NA  0.1   NA   NA   NA   NA   NA   NA   NA   NA
+
+``` r
+dat %>%
+  na.omit() %>%
+  summarise(mean = mean(concept1_E_1), min = min(concept1_E_1), max = max(concept1_E_1), sd = sd(concept1_E_1))
+```
+
+    ##         mean  min max       sd
+    ## 1 -0.2333333 -1.9 2.6 1.248514
+
+``` r
+dat %>%
+  ggplot(mapping = aes(concept1_E_1)) +
+  geom_histogram(binwidth = 0.15)
+```
+
+    ## Warning: Removed 10 rows containing non-finite values (stat_bin).
+
+![](project_files/figure-gfm/means-1.png)<!-- -->

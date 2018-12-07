@@ -1,5 +1,5 @@
 ---
-title: "Project Markdown"
+title: "Sociology Project"
 author: Names
 output: github_document
 ---
@@ -51,6 +51,16 @@ Calculating the mean results by major intent
 
 ```{r means}
 colMeans(premedDat)
+
+dat$concept1_E_1
+
+dat %>%
+  na.omit() %>%
+  summarise(mean = mean(concept1_E_1), min = min(concept1_E_1), max = max(concept1_E_1), sd = sd(concept1_E_1))
+
+dat %>%
+  ggplot(mapping = aes(concept1_E_1)) +
+  geom_histogram(binwidth = 0.15)
 
 ```
 
